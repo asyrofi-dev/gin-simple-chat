@@ -10,7 +10,7 @@ func (repo UserRepository) CreateUser(user entity.User) (entity.User, error) {
 	query := repo.DB.Debug().Create(&user)
 
 	if query.Error != nil {
-		errMsg := fmt.Sprint("[UserRepository] [CreateUser] :", query.Error)
+		errMsg := fmt.Sprint("[UserRepository] [CreateUser] : ", query.Error)
 
 		log.Println(errMsg)
 

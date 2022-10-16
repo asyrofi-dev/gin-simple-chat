@@ -17,7 +17,7 @@ func (usecase UserUsecase) RegisterUser(request entity.UserRequest) (entity.User
 	result, err := usecase.UserRepo.CreateUser(user)
 
 	if err != nil {
-		errMsg := fmt.Sprint("[UserUsecase] [RegisterUser] :", err)
+		errMsg := fmt.Sprint("[UserUsecase] [RegisterUser] : ", err)
 
 		log.Println(errMsg)
 

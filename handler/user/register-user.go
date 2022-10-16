@@ -19,6 +19,7 @@ func (handler UserHandler) RegisterUser(ctx *gin.Context) {
 	if err != nil {
 		errorResponse.Message = err.Error()
 		ctx.JSON(http.StatusBadRequest, errorResponse)
+		return
 	}
 
 	helper.HashPassword(&request.Password)
@@ -28,6 +29,7 @@ func (handler UserHandler) RegisterUser(ctx *gin.Context) {
 	if err != nil {
 		errorResponse.Message = err.Error()
 		ctx.JSON(http.StatusBadRequest, errorResponse)
+		return
 	}
 
 	successResponse.Message = "Register User Succeed"
