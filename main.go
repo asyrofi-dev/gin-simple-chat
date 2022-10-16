@@ -2,19 +2,19 @@ package main
 
 import (
 	"gin-simple-chat/config"
-	"net/http"
+	"gin-simple-chat/router"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	config.ConnectDatabase()
+	config.ConnectDB()
+	config.DropAllTables()
+	config.MigrateDB()
 
 	r := gin.Default()
-	r.GET("/", func(ctx *gin.Context) {
-		ctx.JSON(http.StatusOK, gin.H{
-			"message": "Gin Simple Chat",
-		})
-	})
+
+	router.UserRouter(r)
+
 	r.Run()
 }
